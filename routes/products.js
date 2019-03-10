@@ -1,7 +1,6 @@
 const express = require("express");
 const data = require("../data/data");
 const router = express.Router();
-var path = require("path");
 
 router.get("/", (req, res, next) => {
   res.status(200).json(data.findAll());
@@ -23,11 +22,6 @@ router.get("/:productId", (req, res, next) => {
       message: "Not Found"
     });
   }
-});
-router.get("/download/pdf", (req, res) => {
-  file = path.resolve(__dirname, "../files/file.pdf");
-  const fileName = new Date().toISOString() + "download.pdf";
-  res.download(file, fileName);
 });
 
 module.exports = router;
